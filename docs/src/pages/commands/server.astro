@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<Layout title="server">
+  <p class="small-label fade-up">Commands</p>
+  <h1 class="fade-up d1">server</h1>
+
+  <h2>Usage</h2>
+  <CodeBlock>
+    <code>junkyard server</code>
+  </CodeBlock>
+
+  <h2>Flags</h2>
+  <table>
+    <thead>
+      <tr><th>Flag</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>--port</code></td><td><code>45845</code></td><td>Port to listen on</td></tr>
+      <tr><td><code>--storage</code></td><td><code>~/.junkyard/tmp</code></td><td>Directory for staged files</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Example</h2>
+  <CodeBlock>
+    <code>junkyard server --port 8080 --storage /tmp/junkyard</code>
+  </CodeBlock>
+
+  <h2>Exit codes</h2>
+  <table>
+    <thead>
+      <tr><th>Code</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>0</code></td><td>success</td></tr>
+      <tr><td><code>1</code></td><td>generic error</td></tr>
+      <tr><td><code>2</code></td><td>invalid arguments</td></tr>
+      <tr><td><code>3</code></td><td>network error</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>Storage is an in-memory map plus a temp directory. Nothing persists past expiry.</li>
+    <li>A background goroutine sweeps expired codes every 30 seconds.</li>
+    <li>The server streams files. It never buffers a whole upload in memory.</li>
+  </ul>
+</Layout>
