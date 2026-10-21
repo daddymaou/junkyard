@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Why">
+  <p class="small-label fade-up">Why</p>
+  <h1 class="fade-up d1">Three situations</h1>
+
+  <h2>The shared drive is down</h2>
+  <p>You need to hand a build to a coworker. The network share timed out again. You run <code>junkyard send file.zip</code>, read the code aloud over the phone, and they run <code>junkyard receive</code>. The file lands in ten seconds.</p>
+
+  <h2>The laptop has no account</h2>
+  <p>You are on a borrowed machine with no cloud login and no email client. You still need your files. Junkyard needs only a terminal and a code. Nothing to sign up for, nothing to configure.</p>
+
+  <h2>The transfer died halfway</h2>
+  <p>A two gigabyte download drops at ninety percent. You rerun the same <code>receive</code> command. It resumes from the byte where it stopped instead of starting over.</p>
+</Layout>
