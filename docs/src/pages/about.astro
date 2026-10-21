@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About">
+  <p class="small-label fade-up">About</p>
+  <h1 class="fade-up d1">About Junkyard</h1>
+
+  <p>Junkyard is a terminal file transfer tool. A sender uploads a file and gets a six character code. A receiver types that code and downloads the file. The transfer is end to end encrypted with the code as the key.</p>
+
+  <p>There is no web interface. There are no accounts and no cloud storage. Junkyard runs from the terminal, transfers the file, and forgets it ever existed.</p>
+
+  <h2>Principles</h2>
+  <ul>
+    <li>We delete files after the code expires.</li>
+    <li>We encrypt every byte with the short code as the key.</li>
+    <li>We resume interrupted transfers from the last byte.</li>
+    <li>We generate codes with crypto/rand only.</li>
+    <li>We ship a single binary with no runtime dependencies.</li>
+  </ul>
+</Layout>
