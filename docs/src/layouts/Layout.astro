@@ -1,0 +1,39 @@
+import TopBar from '../components/TopBar.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Pagination from '../components/Pagination.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Junkyard</title>
+    <meta name="description" content="Junkyard moves files between terminals using short codes." />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,700|jetbrains-mono:400,700" rel="stylesheet" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <TopBar />
+    <div class="shell">
+      <Sidebar currentHref={current} />
+      <div class="main">
+        <div class="content">
+          <main>
+            <slot />
+          </main>
+          <Pagination currentHref={current} />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
