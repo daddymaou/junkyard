@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<Layout title="receive">
+  <p class="small-label fade-up">Commands</p>
+  <h1 class="fade-up d1">receive</h1>
+
+  <h2>Usage</h2>
+  <CodeBlock>
+    <code>junkyard receive [code]</code>
+  </CodeBlock>
+
+  <h2>Flags</h2>
+  <table>
+    <thead>
+      <tr><th>Flag</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>--json</code></td><td><code>false</code></td><td>Emit newline-delimited JSON events</td></tr>
+      <tr><td><code>--no-color</code></td><td><code>false</code></td><td>Disable color and Unicode borders</td></tr>
+      <tr><td><code>--out</code></td><td><code>.</code></td><td>Directory to save the file</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Example</h2>
+  <CodeBlock>
+    <code>junkyard receive X7K9M2 --out ~/Downloads</code>
+  </CodeBlock>
+
+  <h2>Exit codes</h2>
+  <table>
+    <thead>
+      <tr><th>Code</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>0</code></td><td>success</td></tr>
+      <tr><td><code>1</code></td><td>generic error</td></tr>
+      <tr><td><code>2</code></td><td>invalid arguments</td></tr>
+      <tr><td><code>3</code></td><td>network error</td></tr>
+      <tr><td><code>4</code></td><td>code expired or not found</td></tr>
+      <tr><td><code>5</code></td><td>user cancelled</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>Interrupted downloads resume from the last byte on re-run with the same code.</li>
+    <li>The cursor blinks at 530ms in the code input.</li>
+    <li>Downloaded chunks are authenticated and decrypted by the client before the file is saved.</li>
+  </ul>
+</Layout>
