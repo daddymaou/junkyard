@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const raw = readFileSync(join(process.cwd(), '..', 'CHANGELOG.md'), 'utf8');
+const html = raw
+  .split('\n')
+  .map((line) => {
+    if (line.startsWith('## ')) return `<h2>${line.slice(3)}</h2>`;
+    if (line.startsWith('- ')) return `<li>${line.slice(2)}</li>`;
+    if (line.trim() === '') return '';
+    return `<p>${line}</p>`;
+  })
+  .join('\n')
+  .replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>')
+  .replace(/<\/ul>\s*<ul>/g, '');
+---
+
+<Layout title="Changelog">
+  <p class="small-label fade-up">Changelog</p>
+  <h1 class="fade-up d1">Changelog</h1>
+  <div set:html={html} />
+</Layout>
