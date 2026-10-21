@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+---
+
+<Layout title="Terminal file transfer">
+  <div class="hero">
+    <h1 class="fade-up" style="color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-size: var(--text-3xl); margin-bottom: var(--space-4);">Junkyard</h1>
+    <p class="lead fade-up d1" style="margin-bottom: var(--space-8);">Move files between terminals using short codes.</p>
+    <div class="fade-up d2" style="max-width: 420px; margin: 0 auto var(--space-8);">
+      <CodeBlock>
+        <code>go install github.com/daddymaou/junkyard@latest</code>
+      </CodeBlock>
+    </div>
+    <div class="fade-up d3" style="display: flex; gap: var(--space-8); justify-content: center;">
+      <a class="arrow-link" href="/getting-started">Read the docs →</a>
+      <a class="arrow-link" href="https://github.com/daddymaou/junkyard">GitHub →</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .hero {
+    min-height: calc(100vh - var(--topbar-h) - var(--space-24));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+</style>
