@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+---
+
+<Layout title="Getting Started">
+  <p class="small-label fade-up">Getting Started</p>
+  <h1 class="fade-up d1">Three steps</h1>
+
+  <h2>1. Install</h2>
+  <CodeBlock title="shell">
+    <code>go install github.com/daddymaou/junkyard@latest</code>
+  </CodeBlock>
+  <CodeBlock title="output">
+    <code>(no output on success)</code>
+  </CodeBlock>
+
+  <h2>2. Start the server</h2>
+  <CodeBlock title="terminal">
+    <code>junkyard server</code>
+  </CodeBlock>
+  <CodeBlock title="output">
+    <code>Starting Junkyard server on port 45845</code>
+  </CodeBlock>
+
+  <h2>3. Send and receive</h2>
+  <CodeBlock title="terminal">
+    <code>junkyard send file.zip</code>
+  </CodeBlock>
+  <CodeBlock title="output">
+    <code>Code: X7K9M2</code>
+  </CodeBlock>
+  <CodeBlock title="another terminal">
+    <code>junkyard receive X7K9M2</code>
+  </CodeBlock>
+</Layout>
