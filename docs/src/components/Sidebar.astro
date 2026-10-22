@@ -1,0 +1,25 @@
+---
+import { nav } from '../lib/nav';
+
+interface Props {
+  currentHref: string;
+}
+const { currentHref } = Astro.props;
+let lastSection: string | null = null;
+---
+
+<nav class="sidebar">
+  {nav.map((entry) => {
+    const showLabel = entry.section && entry.section !== lastSection;
+    if (entry.section) lastSection = entry.section;
+    const active = currentHref === entry.href;
+    return (
+      <>
+        {showLabel && <div class="section-label">{entry.section}</div>}
+        <a class:list={['link', { active }]} href={entry.href}>
+          {entry.label}
+        </a>
+      </>
+    );
+  })}
+</nav>
