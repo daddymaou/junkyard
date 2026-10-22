@@ -1,6 +1,5 @@
 <h1 align="center">
   <img src="assets/junkyard-wordmark.svg" alt="J U N K Y A R D" width="480" />
-  <p> junkyard.</p>
 </h1>
 
 **Move files between terminals with a short code.**
