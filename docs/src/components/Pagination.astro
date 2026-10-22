@@ -1,0 +1,28 @@
+---
+import { nav } from '../lib/nav';
+
+interface Props {
+  currentHref: string;
+}
+const { currentHref } = Astro.props;
+const idx = nav.findIndex((e) => e.href === currentHref);
+const prev = idx > 0 ? nav[idx - 1] : null;
+const next = idx >= 0 && idx < nav.length - 1 ? nav[idx + 1] : null;
+---
+
+{(prev || next) && (
+  <div class="pagination">
+    {prev ? (
+      <a href={prev.href}>
+        <span class="dir">Prev</span>
+        <span class="title">{prev.label}</span>
+      </a>
+    ) : <span />}
+    {next ? (
+      <a class="next" href={next.href}>
+        <span class="dir">Next</span>
+        <span class="title">{next.label}</span>
+      </a>
+    ) : <span />}
+  </div>
+)}
