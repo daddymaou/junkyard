@@ -1,0 +1,11 @@
+---
+interface Props {
+  title?: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="codeblock">
+  {title && <div class="label">{title}</div>}
+  <pre><slot /></pre>
+</div>
