@@ -1,0 +1,425 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="See It Work">
+  <p class="small-label fade-up">Demo</p>
+  <h1 class="fade-up d1">See it work</h1>
+  <p class="lead fade-up d2">One machine sends. The other enters the code. The file lands.</p>
+
+  <div class="stage fade-up d3">
+    <div class="desk">
+      <div class="desk-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="desk-title">send · terminal</span>
+      </div>
+      <div class="desk-body">
+        <div class="frame" id="sender-frame">
+          <div class="hdr">
+            <span class="wm">J U N K Y A R D</span>
+            <span class="ver">v0.1.0</span>
+          </div>
+          <div class="hero-row">
+            <div class="qr-panel">
+              <pre class="qr" id="qr"></pre>
+              <div class="qr-cap">Scan to receive</div>
+              <div class="code-slot"><span class="code" id="code-box">_ _ _ _ _ _</span></div>
+              <div class="exp" id="exp"></div>
+            </div>
+            <div class="meta-col">
+              <div class="fname">file.zip · 2.4 GB · video/mp4</div>
+              <div class="bar-track"><div class="bar-fill" id="bar"></div></div>
+              <div class="stat" id="stat">waiting</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="link-line" aria-hidden="true">
+      <span class="pulse"></span>
+    </div>
+
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-body">
+        <div class="phone-label">receive</div>
+        <div class="phone-input" id="phone-input"></div>
+        <div class="phone-status" id="phone-status">enter code</div>
+        <div class="phone-bar"><div class="phone-fill" id="phone-bar"></div></div>
+        <div class="phone-stat" id="phone-stat"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-n">01</span>
+      <div>
+        <h3>Send</h3>
+        <p>The sender uploads. Junkyard prints a six character code and a QR.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-n">02</span>
+      <div>
+        <h3>Share</h3>
+        <p>Type the code on the other machine or scan the QR with a phone.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-n">03</span>
+      <div>
+        <h3>Land</h3>
+        <p>The file downloads with a live progress bar. Kills resume.</p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .stage {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-6);
+    margin: var(--space-12) 0;
+    background: var(--surface);
+    border: var(--border-w);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    overflow: hidden;
+  }
+
+  .desk {
+    background: var(--bg);
+    border: var(--border-w);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    min-width: 0;
+  }
+  .desk-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--surface-alt);
+    border-bottom: var(--border-w);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .dot.r { background: var(--error); }
+  .dot.y { background: var(--warning); }
+  .dot.g { background: var(--success); }
+  .desk-title {
+    margin-left: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-dim);
+  }
+  .desk-body { padding: var(--space-4); }
+
+  .frame {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    transition: border-color 400ms ease;
+  }
+  .frame.done { border-color: var(--success); }
+
+  .hdr { display: flex; justify-content: space-between; margin-bottom: var(--space-4); }
+  .wm { font-weight: 700; letter-spacing: 0.2em; color: var(--accent); font-size: var(--text-sm); }
+  .ver { color: var(--text-dim); font-family: var(--font-mono); font-size: var(--text-xs); }
+
+  .hero-row { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+
+  .qr-panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    text-align: center;
+    flex: 0 0 auto;
+  }
+  .qr {
+    font-family: var(--font-mono);
+    font-size: 6px;
+    line-height: 1.05;
+    color: var(--text);
+    letter-spacing: 1px;
+    min-height: 78px;
+  }
+  .qr-cap { font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-2); }
+  .code-slot { margin-top: var(--space-2); }
+  .code {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    letter-spacing: 0.18em;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    min-width: 9.5em;
+  }
+  .exp {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: var(--space-2);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  .exp.on { opacity: 1; }
+  .exp.pulse { animation: pulseLine 800ms ease infinite; }
+  @keyframes pulseLine { 50% { color: var(--accent); } }
+
+  .meta-col { flex: 1; min-width: 200px; display: flex; flex-direction: column; justify-content: center; gap: var(--space-3); }
+  .fname { font-size: var(--text-xs); color: var(--text-muted); font-family: var(--font-mono); }
+  .bar-track {
+    height: 14px;
+    background: var(--surface-alt);
+    border: var(--border-w);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .bar-fill.full { background: var(--success); }
+  .stat { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-dim); }
+
+  .link-line {
+    width: 56px;
+    height: 2px;
+    background: var(--border-bright);
+    position: relative;
+    overflow: hidden;
+  }
+  .pulse {
+    position: absolute;
+    top: 0; left: -40%;
+    width: 40%; height: 100%;
+    background: var(--accent);
+    animation: travel 1.6s linear infinite;
+  }
+  @keyframes travel { to { left: 110%; } }
+
+  .phone {
+    width: 190px;
+    background: var(--bg);
+    border: 2px solid var(--border-bright);
+    border-radius: 24px;
+    padding: var(--space-3);
+    justify-self: center;
+    position: relative;
+  }
+  .phone-notch {
+    width: 60px; height: 5px;
+    background: var(--border-bright);
+    border-radius: 3px;
+    margin: 0 auto var(--space-3);
+  }
+  .phone-body { padding: var(--space-2); text-align: center; }
+  .phone-label {
+    font-size: 10px;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: var(--space-3);
+  }
+  .phone-input {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-base);
+    letter-spacing: 0.25em;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-2);
+    min-height: 42px;
+    background: var(--surface);
+    transition: border-color 200ms ease;
+  }
+  .phone-input.focus { border-color: var(--border-bright); }
+  .phone-input .caret {
+    display: inline-block;
+    width: 0.55em; height: 1.05em;
+    background: var(--accent);
+    vertical-align: text-bottom;
+    animation: blink 530ms steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .phone-status {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: var(--space-3);
+    min-height: 1.2em;
+  }
+  .phone-status.ok { color: var(--success); }
+  .phone-bar {
+    height: 8px;
+    background: var(--surface-alt);
+    border: var(--border-w);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-top: var(--space-3);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  .phone-bar.on { opacity: 1; }
+  .phone-fill {
+    height: 100%; width: 0%;
+    background: var(--accent);
+    transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .phone-fill.full { background: var(--success); }
+  .phone-stat {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: var(--space-2);
+    min-height: 1em;
+  }
+
+  .steps { display: grid; gap: var(--space-6); }
+  .step {
+    display: flex;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    border: var(--border-w);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .step:hover { border-color: var(--border-bright); transform: translateX(4px); }
+  .step-n {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--accent);
+    font-size: var(--text-sm);
+    padding-top: 2px;
+  }
+  .step h3 { margin-top: 0; }
+  .step p { color: var(--text-muted); margin-bottom: 0; font-size: var(--text-sm); }
+
+  @media (max-width: 860px) {
+    .stage { grid-template-columns: 1fr; padding: var(--space-4); }
+    .link-line { display: none; }
+    .phone { order: -1; }
+    .hero-row { justify-content: center; }
+  }
+</style>
+
+<script>
+  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+  const QR_ROWS = [
+    "███  █ █   ██   ███",
+    "█ █ ██ █  █ █ █  █ █",
+    "███  █ █  █  █  ███ ",
+    "   ███ ██  █ █  █  █",
+    "██   █  █ ██  █ ██  ",
+    "█ █ ██  ██  █  █ ██ ",
+    " ██  █  █  ██  █  ██",
+    "██ █  ██  █  ██  █ █",
+    "█  ██  ██ █  ██  ██ ",
+  ];
+  const CODE = "X7K9M2";
+
+  async function typeInto(el: HTMLElement, text: string, speed = 55) {
+    for (const ch of text) {
+      el.textContent += ch;
+      await sleep(speed);
+    }
+  }
+
+  async function run() {
+    const qr = document.getElementById('qr')!;
+    const codeBox = document.getElementById('code-box')!;
+    const exp = document.getElementById('exp')!;
+    const bar = document.getElementById('bar')!;
+    const stat = document.getElementById('stat')!;
+    const frame = document.getElementById('sender-frame')!;
+    const phoneInput = document.getElementById('phone-input')!;
+    const phoneStatus = document.getElementById('phone-status')!;
+    const phoneBar = document.getElementById('phone-bar')!;
+    const phoneFill = document.getElementById('phone-bar')!.firstElementChild as HTMLElement;
+    const phoneStat = document.getElementById('phone-stat')!;
+
+    await sleep(600);
+
+    for (const row of QR_ROWS) {
+      qr.textContent += row + "\n";
+      await sleep(70);
+    }
+
+    codeBox.textContent = "";
+    await typeInto(codeBox, CODE, 90);
+
+    exp.classList.add('on');
+    let secs = 594;
+    const tick = setInterval(() => {
+      secs--;
+      const m = Math.floor(secs / 60);
+      const s = secs % 60;
+      exp.textContent = `Expires in  ${m}m ${String(s).padStart(2, "0")}s`;
+      if (secs < 60) exp.classList.add('pulse');
+    }, 1000);
+    exp.textContent = `Expires in  9m 54s`;
+
+    stat.textContent = "uploading · 4.2 MB/s";
+    await sleep(400);
+
+    let pct = 0;
+    while (pct < 100) {
+      pct = Math.min(100, pct + Math.floor(Math.random() * 14) + 6);
+      bar.style.width = pct + "%";
+      const rem = Math.max(1, Math.round((100 - pct) * 0.42));
+      stat.textContent = `uploading · 4.2 MB/s · ${rem}s remaining`;
+      await sleep(280);
+    }
+    bar.classList.add('full');
+    stat.textContent = "upload complete";
+    frame.classList.add('done');
+    clearInterval(tick);
+
+    await sleep(700);
+
+    phoneInput.classList.add('focus');
+    for (const ch of CODE) {
+      phoneInput.innerHTML = (phoneInput.textContent || "") + ch + '<span class="caret"></span>';
+      await sleep(140);
+    }
+    await sleep(300);
+    phoneInput.textContent = CODE;
+    phoneInput.classList.remove('focus');
+    phoneStatus.textContent = "code accepted";
+    phoneStatus.classList.add('ok');
+
+    await sleep(400);
+    phoneBar.classList.add('on');
+    let dpct = 0;
+    while (dpct < 100) {
+      dpct = Math.min(100, dpct + Math.floor(Math.random() * 16) + 7);
+      phoneFill.style.width = dpct + "%";
+      phoneStat.textContent = `${dpct}% · receiving`;
+      await sleep(240);
+    }
+    phoneFill.classList.add('full');
+    phoneStatus.textContent = "file received";
+    phoneStat.textContent = "file.zip · saved";
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      run();
+      io.disconnect();
+    }
+  }, { threshold: 0.3 });
+
+  const stage = document.querySelector('.stage');
+  if (stage) io.observe(stage);
+</script>
