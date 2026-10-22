@@ -1,0 +1,65 @@
+{
+  "name": "junkyard",
+  "bg": "#141719",
+  "fg": "#E6E8EB",
+  "settings": [
+    {
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": { "foreground": "#5C636B", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["keyword", "storage.type", "storage.modifier"],
+      "settings": { "foreground": "#FFB000" }
+    },
+    {
+      "scope": ["string", "string.quoted"],
+      "settings": { "foreground": "#4ADE80" }
+    },
+    {
+      "scope": ["constant.numeric", "constant.language"],
+      "settings": { "foreground": "#FBBF24" }
+    },
+    {
+      "scope": ["entity.name.function", "support.function"],
+      "settings": { "foreground": "#E6E8EB", "fontStyle": "bold" }
+    },
+    {
+      "scope": ["variable", "meta.variable"],
+      "settings": { "foreground": "#E6E8EB" }
+    },
+    {
+      "scope": ["entity.name.tag", "punctuation.definition.tag"],
+      "settings": { "foreground": "#FFB000" }
+    },
+    {
+      "scope": ["invalid", "invalid.illegal"],
+      "settings": { "foreground": "#F87171" }
+    },
+    {
+      "scope": ["markup.inserted"],
+      "settings": { "foreground": "#4ADE80" }
+    },
+    {
+      "scope": ["markup.deleted"],
+      "settings": { "foreground": "#F87171" }
+    }
+  ],
+  "tokenColors": [
+    {
+      "scope": ["punctuation.definition.comment", "comment"],
+      "settings": { "foreground": "#5C636B" }
+    },
+    {
+      "scope": ["keyword", "storage.type", "storage.modifier"],
+      "settings": { "foreground": "#FFB000" }
+    },
+    {
+      "scope": ["string"],
+      "settings": { "foreground": "#4ADE80" }
+    },
+    {
+      "scope": ["constant.numeric"],
+      "settings": { "foreground": "#FBBF24" }
+    }
+  ]
+}
