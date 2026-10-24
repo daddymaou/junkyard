@@ -10,9 +10,8 @@ func Generate(length int) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	for i, b := range b {
-		b = b % byte(len(letters))
-		b[i] = letters[b]
+	for i := range b {
+		b[i] = letters[int(b[i])%len(letters)]
 	}
 	return string(b), nil
 }
