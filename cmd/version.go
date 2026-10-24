@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"runtime"
 	"runtime/debug"
 
@@ -42,6 +41,10 @@ func runVersion(cmd *cobra.Command, args []string) error {
 	if commit == "" {
 		commit = "unknown"
 	}
+	commitShort := commit
+	if len(commitShort) > 8 {
+		commitShort = commitShort[:8]
+	}
 	if date == "" {
 		date = "unknown"
 	}
@@ -53,10 +56,10 @@ func runVersion(cmd *cobra.Command, args []string) error {
 			Padding(1, 2).
 			Width(50).
 			Render(fmt.Sprintf("J U N K Y A R D\n\n%s\ncommit: %s\nbuilt: %s\nGo: %s\nOS: %s\nArch: %s",
-				version, commit[:8], date, runtime.Version(), runtime.GOOS, runtime.GOARCH))
+				version, commitShort, date, runtime.Version(), runtime.GOOS, runtime.GOARCH))
 		fmt.Println(panel)
 	} else {
-		fmt.Printf("junkyard %s (%s) %s/%s\n", version, commit[:8], runtime.GOOS, runtime.GOARCH)
+		fmt.Printf("junkyard %s (%s) %s/%s\n", version, commitShort, runtime.GOOS, runtime.GOARCH)
 	}
 	return nil
 }
