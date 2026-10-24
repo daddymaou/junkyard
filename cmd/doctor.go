@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"runtime"
-	"runtime/debug"
 	"time"
 
 	"github.com/charmbracelet/lipgloss"
