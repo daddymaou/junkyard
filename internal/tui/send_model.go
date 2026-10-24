@@ -7,9 +7,9 @@ import (
 
 	"github.com/charmbracelet/bubbles/progress"
 	"github.com/charmbracelet/bubbles/spinner"
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/mdp/qrterminal/v3"
-	tea "github.com/charmbracelet/bubbletea"
 )
 
 type SendModel struct {
@@ -44,7 +44,7 @@ func NewSendModel(fileName string, fileSize int64, mimeType string) *SendModel {
 		progress: p,
 		spinner:  s,
 		expires:  time.Now().Add(10 * time.Minute),
-		showQR:  true,
+		showQR:   true,
 	}
 }
 
@@ -88,7 +88,7 @@ func (m *SendModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, cmd
 	case spinner.TickMsg:
 		newSpinner, cmd := m.spinner.Update(msg)
-		m.spinner = newSpinner.(spinner.Model)
+		m.spinner = newSpinner
 		return m, cmd
 	}
 	return m, nil

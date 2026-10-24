@@ -7,8 +7,8 @@ import (
 	"github.com/charmbracelet/bubbles/progress"
 	"github.com/charmbracelet/bubbles/spinner"
 	"github.com/charmbracelet/bubbles/textinput"
-	"github.com/charmbracelet/lipgloss"
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 )
 
 type ReceiveModel struct {
@@ -106,7 +106,7 @@ func (m *ReceiveModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, cmd
 	case spinner.TickMsg:
 		newSpinner, cmd := m.spinner.Update(msg)
-		m.spinner = newSpinner.(spinner.Model)
+		m.spinner = newSpinner
 		return m, cmd
 	}
 	return m, nil

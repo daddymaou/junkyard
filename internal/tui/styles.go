@@ -7,20 +7,19 @@ import (
 
 var (
 	PanelStyle = lipgloss.NewStyle().
-		BorderStyle(lipgloss.RoundedBorder()).
-		BorderForeground(Border).
-		Padding(1, 2)
+			BorderStyle(lipgloss.RoundedBorder()).
+			BorderForeground(Border).
+			Padding(1, 2)
 
 	TitleStyle = lipgloss.NewStyle().
-		Foreground(Accent).
-		Bold(true).
-		LetterSpacing(1)
+			Foreground(Accent).
+			Bold(true)
 
 	CodeBlockStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("#0B0D0F")).
-		Background(Accent).
-		Bold(true).
-		Padding(0, 1)
+			Foreground(lipgloss.Color("#0B0D0F")).
+			Background(Accent).
+			Bold(true).
+			Padding(0, 1)
 
 	ProgressStyle = progress.New(
 		progress.WithDefaultGradient(),
@@ -29,19 +28,19 @@ var (
 	)
 
 	MetaStyle = lipgloss.NewStyle().
-		Foreground(TextMuted)
+			Foreground(TextMuted)
 
 	ErrorStyle = lipgloss.NewStyle().
-		Foreground(Error)
+			Foreground(Error)
 
 	SuccessStyle = lipgloss.NewStyle().
-		Foreground(Success)
+			Foreground(Success)
 
 	FocusedBorderStyle = lipgloss.NewStyle().
-		BorderStyle(lipgloss.RoundedBorder()).
-		BorderForeground(BorderBright)
+				BorderStyle(lipgloss.RoundedBorder()).
+				BorderForeground(BorderBright)
 
 	DimBorderStyle = lipgloss.NewStyle().
-		BorderStyle(lipgloss.RoundedBorder()).
-		BorderForeground(Border)
+			BorderStyle(lipgloss.RoundedBorder()).
+			BorderForeground(Border)
 )
