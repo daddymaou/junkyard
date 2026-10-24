@@ -104,6 +104,9 @@ func checkTruecolor() (bool, string) {
 }
 
 func checkClock() (bool, string) {
-	// Simplified - in reality would check against server time
-	return true, "synced"
+	now := time.Now()
+	if now.Year() < 2020 {
+		return false, "system clock appears incorrect"
+	}
+	return true, "ok"
 }
