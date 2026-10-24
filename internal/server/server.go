@@ -39,12 +39,12 @@ type fileEntry struct {
 }
 
 type uploadAssembly struct {
-	chunks     map[int][]byte
-	total      int
-	fileName   string
-	fileSize   int64
-	encrypted  bool
-	expires    time.Time
+	chunks    map[int][]byte
+	total     int
+	fileName  string
+	fileSize  int64
+	encrypted bool
+	expires   time.Time
 }
 
 func NewHandler() *Handler {

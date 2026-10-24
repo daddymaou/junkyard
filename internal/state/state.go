@@ -8,18 +8,18 @@ import (
 )
 
 type TransferState struct {
-	Code       string    `json:"code"`
-	FileName   string    `json:"file_name"`
-	FileSize   int64     `json:"file_size"`
-	MimeType   string    `json:"mime_type"`
-	BytesDone  int64     `json:"bytes_done"`
-	TransferSize int64   `json:"transfer_size,omitempty"`
-	Encrypted  bool      `json:"encrypted,omitempty"`
-	TotalChunks int      `json:"total_chunks,omitempty"`
-	ChunksDone []bool    `json:"chunks_done,omitempty"`
-	UpdatedAt  time.Time `json:"updated_at"`
-	IsUpload   bool      `json:"is_upload"`
-	OutDir     string    `json:"out_dir,omitempty"`
+	Code         string    `json:"code"`
+	FileName     string    `json:"file_name"`
+	FileSize     int64     `json:"file_size"`
+	MimeType     string    `json:"mime_type"`
+	BytesDone    int64     `json:"bytes_done"`
+	TransferSize int64     `json:"transfer_size,omitempty"`
+	Encrypted    bool      `json:"encrypted,omitempty"`
+	TotalChunks  int       `json:"total_chunks,omitempty"`
+	ChunksDone   []bool    `json:"chunks_done,omitempty"`
+	UpdatedAt    time.Time `json:"updated_at"`
+	IsUpload     bool      `json:"is_upload"`
+	OutDir       string    `json:"out_dir,omitempty"`
 }
 
 func StateDir() string {

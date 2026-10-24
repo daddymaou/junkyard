@@ -14,9 +14,9 @@ import (
 )
 
 const (
-	KeySize   = 32
-	SaltSize  = 16
-	NonceSize = 12
+	KeySize         = 32
+	SaltSize        = 16
+	NonceSize       = 12
 	StreamChunkSize = 1024 * 1024
 )
 
