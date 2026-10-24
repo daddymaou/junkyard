@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Changelog · Junkyard</title>
+  <meta name="description" content="Junkyard changelog." />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=inter:400,500,700|jetbrains-mono:400,700" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="topbar">
+    <a href="/" class="brand" aria-label="Junkyard home">
+      <img src="/junkyard-wordmark.svg" alt="J U N K Y A R D" />
+      <span>Junkyard</span>
+    </a>
+    <div class="meta">
+      <a href="https://github.com/daddymaou/junkyard" rel="noreferrer">GitHub</a>
+      <span>v0.1.0</span>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </header>
+
+  <div class="shell">
+    <nav class="sidebar">
+      <div class="section-label first">Product</div>
+      <a class="link" href="/">Overview</a>
+      <a class="link" href="/getting-started">Getting Started</a>
+      <div class="section-label">Commands</div>
+      <a class="link" href="/commands/send">send</a>
+      <a class="link" href="/commands/receive">receive</a>
+      <a class="link" href="/commands/server">server</a>
+      <div class="section-label">More</div>
+      <a class="link" href="/demo">See It Work</a>
+      <a class="link" href="/why">Why Junkyard</a>
+      <a class="link" href="/about">About</a>
+      <a class="link" href="/license">License</a>
+      <a class="link" href="/support">Support</a>
+      <a class="link active" href="/changelog">Changelog</a>
+      <a class="link" href="/testing">Testing</a>
+    </nav>
+
+    <main class="main">
+      <div class="content" id="content">
+        <h1 class="fade-up d1">Changelog</h1>
+        <p class="lead fade-up d2">Notable changes to Junkyard.</p>
+
+        <h2 class="fade-up d3">0.1.0 — unreleased</h2>
+        <ul class="fade-up d3">
+          <li>Initial release: <code>send</code>, <code>receive</code>, <code>server</code>, <code>doctor</code>, <code>version</code> commands.</li>
+          <li>Six-character transfer codes generated with Go's cryptographic random source.</li>
+          <li>QR-assisted handoff and encrypted chunk transfers.</li>
+          <li>Resumable downloads and <code>--json</code> script-friendly output.</li>
+        </ul>
+
+        <div class="pagination fade-up d3">
+          <a href="/support">
+            <span class="dir">Prev</span>
+            <span class="title">Support</span>
+          </a>
+          <a class="next" href="/testing">
+            <span class="dir">Next</span>
+            <span class="title">Testing</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      &copy; 2026 Daddy Maou. Junkyard is proprietary software. See <a href="/license">LICENSE</a>.
+    </div>
+  </footer>
+</body>
+</html>

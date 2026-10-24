@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Getting Started · Junkyard</title>
+  <meta name="description" content="Install and run Junkyard for the first time." />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=inter:400,500,700|jetbrains-mono:400,700" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="topbar">
+    <a href="/" class="brand" aria-label="Junkyard home">
+      <img src="/junkyard-wordmark.svg" alt="J U N K Y A R D" />
+      <span>Junkyard</span>
+    </a>
+    <div class="meta">
+      <a href="https://github.com/daddymaou/junkyard" rel="noreferrer">GitHub</a>
+      <span>v0.1.0</span>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </header>
+
+  <div class="shell">
+    <nav class="sidebar">
+      <div class="section-label first">Product</div>
+      <a class="link" href="/">Overview</a>
+      <a class="link active" href="/getting-started">Getting Started</a>
+      <div class="section-label">Commands</div>
+      <a class="link" href="/commands/send">send</a>
+      <a class="link" href="/commands/receive">receive</a>
+      <a class="link" href="/commands/server">server</a>
+      <div class="section-label">More</div>
+      <a class="link" href="/demo">See It Work</a>
+      <a class="link" href="/why">Why Junkyard</a>
+      <a class="link" href="/about">About</a>
+      <a class="link" href="/license">License</a>
+      <a class="link" href="/support">Support</a>
+      <a class="link" href="/changelog">Changelog</a>
+    </nav>
+
+    <main class="main">
+      <div class="content" id="content">
+        <h1 class="fade-up d1">Getting Started</h1>
+        <p class="lead fade-up d2">Install Junkyard, start the relay server, and run your first transfer.</p>
+
+        <h2 class="fade-up d3">1. Install</h2>
+        <p class="fade-up d3">Junkyard is a single Go CLI. Install from source:</p>
+        <pre class="codeblock fade-up d3"><div class="label">shell</div><pre><code>go install github.com/daddymaou/junkyard/cmd/junkyard@latest</code></pre></pre>
+        <p class="fade-up d3">This builds the <code>junkyard</code> binary into <code>$GOBIN</code> (usually <code>~/go/bin</code>). Make sure that directory is on your <code>PATH</code>.</p>
+
+        <h2 class="fade-up d3">2. Start the server</h2>
+        <p class="fade-up d3">Both terminals connect to a relay you run. Start it on the machine that can be reached by both sides:</p>
+        <pre class="codeblock fade-up d3"><div class="label">shell</div><pre><code>junkyard server</code></pre></pre>
+        <p class="fade-up d3">By default it listens on <code>localhost:45845</code>. Use <code>--listen</code> to bind to a different address if the sender and receiver are on different machines.</p>
+
+        <h2 class="fade-up d3">3. Send a file</h2>
+        <p class="fade-up d3">From the sending terminal:</p>
+        <pre class="codeblock fade-up d3"><div class="label">shell</div><pre><code>junkyard send document.pdf</code></pre></pre>
+        <p class="fade-up d3">Junkyard prints a six-character transfer code and (optionally) a QR code. Share that code with the recipient — separately from the file.</p>
+
+        <h2 class="fade-up d3">4. Receive the file</h2>
+        <p class="fade-up d3">From the receiving terminal:</p>
+        <pre class="codeblock fade-up d3"><div class="label">shell</div><pre><code>junkyard receive &lt;code&gt;</code></pre></pre>
+        <p class="fade-up d3">Enter the six-character code. The file downloads through the relay and is written to your current directory (or a path you choose with <code>--output</code>).</p>
+
+        <div class="alert alert-info fade-up d3">
+          <div class="alert-title">Multiple files</div>
+          <p>Pass several files to <code>junkyard send</code> and they are packaged into a ZIP archive automatically:</p>
+          <pre><code>junkyard send file1.txt file2.pdf image.png</code></pre>
+        </div>
+
+        <div class="pagination fade-up d3">
+          <a href="/">
+            <span class="dir">Prev</span>
+            <span class="title">Overview</span>
+          </a>
+          <a class="next" href="/commands/send">
+            <span class="dir">Next</span>
+            <span class="title">send</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      &copy; 2026 Daddy Maou. Junkyard is proprietary software. See <a href="/license">LICENSE</a>.
+    </div>
+  </footer>
+</body>
+</html>

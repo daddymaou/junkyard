@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Junkyard — Move files between terminals with a short code</title>
+  <meta name="description" content="Junkyard moves files between terminals using short transfer codes. No accounts, no browser upload forms." />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=inter:400,500,700|jetbrains-mono:400,700" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="topbar">
+    <a href="/" class="brand" aria-label="Junkyard home">
+      <img src="/junkyard-wordmark.svg" alt="J U N K Y A R D" />
+      <span>Junkyard</span>
+    </a>
+    <div class="meta">
+      <a href="https://github.com/daddymaou/junkyard" rel="noreferrer">GitHub</a>
+      <span>v0.1.0</span>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </header>
+
+  <div class="shell">
+    <nav class="sidebar">
+      <div class="section-label first">Product</div>
+      <a class="link active" href="/">Overview</a>
+      <a class="link" href="/getting-started">Getting Started</a>
+      <div class="section-label">Commands</div>
+      <a class="link" href="/commands/send">send</a>
+      <a class="link" href="/commands/receive">receive</a>
+      <a class="link" href="/commands/server">server</a>
+      <div class="section-label">More</div>
+      <a class="link" href="/demo">See It Work</a>
+      <a class="link" href="/why">Why Junkyard</a>
+      <a class="link" href="/about">About</a>
+      <a class="link" href="/license">License</a>
+      <a class="link" href="/support">Support</a>
+      <a class="link" href="/changelog">Changelog</a>
+    </nav>
+
+    <main class="main">
+      <div class="content">
+        <h1 class="fade-up d1">Move files between terminals with a short code.</h1>
+        <p class="lead fade-up d2">Junkyard is a command-line file transfer tool for sending a file from one terminal and receiving it in another. The sender gets a six-character code; the receiver uses that code to retrieve the file. A QR code is available when scanning is easier than typing.</p>
+
+        <div class="fade-up d3">
+          <h2>A transfer, at a glance</h2>
+          <p>The code is shared separately from the file. The file travels through the Junkyard server to the receiving terminal.</p>
+        </div>
+
+        <table class="fade-up d3">
+          <thead>
+            <tr>
+              <th style="width:33%">Send</th>
+              <th style="width:33%">Share</th>
+              <th style="width:34%">Receive</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Choose one file or pass multiple files. Multiple files are packaged into a ZIP archive.</td>
+              <td>Pass the generated six-character code to the recipient, or let them scan the QR code.</td>
+              <td>Enter the code in the receiving terminal and choose where the file should be saved.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="fade-up d3">Product details</h2>
+        <ul class="fade-up d3">
+          <li><strong>Short transfer codes:</strong> generated using Go's cryptographic random source.</li>
+          <li><strong>Terminal-first workflow:</strong> send and receive files without switching to a web upload page.</li>
+          <li><strong>QR-assisted handoff:</strong> scan the sender's QR code instead of typing the code.</li>
+          <li><strong>Multiple-file sends:</strong> send several files together as a ZIP archive.</li>
+          <li><strong>Authenticated file encryption:</strong> the client encrypts file chunks before upload and verifies them after download.</li>
+          <li><strong>Resumable downloads:</strong> interrupted downloads continue from the saved byte offset.</li>
+          <li><strong>Script-friendly output:</strong> <code>--json</code> emits newline-delimited JSON events while transfers run.</li>
+          <li><strong>Single Go CLI:</strong> no separate desktop or browser client.</li>
+        </ul>
+
+        <div class="alert alert-info fade-up d3">
+          <div class="alert-title">No hosted relay</div>
+          <p>Junkyard does not operate a public file-transfer service. The sender and receiver both connect to a relay you run (default <code>localhost:45845</code>). Use a relay you control for sensitive transfers.</p>
+        </div>
+
+        <div class="fade-up d3">
+          <h2>Quick start</h2>
+          <pre class="codeblock"><div class="label">shell</div><pre><code># Install
+go install github.com/daddymaou/junkyard/cmd/junkyard@latest
+
+# Send a file (prints a 6-character code)
+junkyard send document.pdf
+
+# Receive a file
+junkyard receive &lt;code&gt;</code></pre></pre>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      &copy; 2026 Daddy Maou. Junkyard is proprietary software. See <a href="/license">LICENSE</a>.
+    </div>
+  </footer>
+</body>
+</html>
