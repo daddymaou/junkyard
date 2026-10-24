@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"junkyard/internal/code"
 	"junkyard/internal/client"
+	"junkyard/internal/code"
 
 	"github.com/spf13/cobra"
 )
