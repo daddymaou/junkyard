@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"junkyard/internal/code"
@@ -312,13 +313,13 @@ func (c *Client) uploadChunk(ctx context.Context, transferCode string, index, to
 	body := &bytes.Buffer{}
 	writer := multipart.NewWriter(body)
 	fields := map[string]string{
-		"code":          transferCode,
-		"chunk_index":   strconv.Itoa(index),
-		"total_chunks":  strconv.Itoa(total),
-		"file_name":     fileName,
-		"file_size":     strconv.FormatInt(fileSize, 10),
-		"ttl":           strconv.Itoa(ttl),
-		"encrypted":     "true",
+		"code":         transferCode,
+		"chunk_index":  strconv.Itoa(index),
+		"total_chunks": strconv.Itoa(total),
+		"file_name":    fileName,
+		"file_size":    strconv.FormatInt(fileSize, 10),
+		"ttl":          strconv.Itoa(ttl),
+		"encrypted":    "true",
 	}
 	for key, value := range fields {
 		if err := writer.WriteField(key, value); err != nil {
