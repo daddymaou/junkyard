@@ -1,4 +1,4 @@
-## 0.1.0 — unreleased
+## 0.1.0 — 2026-10-30
 
 - Send a file from the terminal and get a six character code back
 - Receive a file by typing the code on any other terminal
